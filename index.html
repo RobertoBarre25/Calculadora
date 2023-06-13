@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><i>Calculadora de Derivadas</i></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      position: relative;
+      display: grid;
+      place-content: center;
+    }
+    
+    .container {
+      margin-top: calc(100h - 400);
+      width: 400px;
+      margin: 50;
+      background-color: rgba(255, 255, 255,00.6);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      font-family: cursive;
+    }
+    
+    .input-group {
+      margin-bottom: 10px;
+    }
+    
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: #35373B;
+      color: #D9D9D9;
+      padding: 8px 12px;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #D9D9D9;
+      color: #35373B;
+    }
+
+    #bg-img {
+      position: absolute;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <img id="bg-img" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/da967073116977.5bfecec84fe10.gif"></img>
+  <div class="container">
+    <h1>Calculadora de Derivadas</h1>
+    <div class="input-group">
+      <label>Numerador:</label>
+      <input type="text" id="inputNumerator" placeholder="Ejemplo: 2x^2 + 3x + 1" />
+    </div>
+    <div class="input-group">
+      <label>Denominador:</label>
+      <input type="text" id="inputDenominator" placeholder="Ejemplo: 3x + 2" />
+    </div>
+    <div class="input-group">
+      <button class="btn" onclick="calcularDerivada()">Calcular Derivada</button>
+    </div>
+    <div class="input-group">
+      <label>Derivada:</label>
+      <input type="text" id="outputDerivative" readonly />
+    </div>
+  </div>
+
+  <script>
+    function calcularDerivada() {
+      var inputNumerator = document.getElementById('inputNumerator').value;
+      var inputDenominator = document.getElementById('inputDenominator').value;
+      var outputDerivative = document.getElementById('outputDerivative');
+      
+      var derivative = derivativeOfQuotient(inputNumerator, inputDenominator);
+      
+      outputDerivative.value = derivative;
+    }
+    
+    function derivativeOfQuotient(numeratorString, denominatorString) {
+ 
+      var partsNum = numeratorString.split(" ");
+      var partsDenom = denominatorString.split(" ");
+      
+      var a = parseFloat(partsNum[0]);
+      var b = parseFloat(partsNum[2]);
+      var c = parseFloat(partsNum[4]);
+      var d = parseFloat(partsDenom[0]);
+      var e = parseFloat(partsDenom[2]);
+      
+      var numeratorDerivative = (2 * a) + "x + " + b;
+      var denominatorDerivative = d;
+      
+      var derivative = "(" + numeratorDerivative + ") / (" + denominatorDerivative + ")";
+      
+      return derivative;
+    }
+  </script>
+</body>
+</html>
+
+
+
